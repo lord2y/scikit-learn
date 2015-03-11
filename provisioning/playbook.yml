@@ -8,9 +8,6 @@
    - name: install zip
      sudo: yes
      apt: name=zip state=present  
-   - name: check if anaconda exist
-     stat: path={{ anaconda_path }}
-     register: anaconda_present
    - name: check if Anaconda Installer is present?
      stat: path=~/Anaconda-2.1.0-Linux-x86.sh
      register: get_anaconda
