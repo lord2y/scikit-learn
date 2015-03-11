@@ -41,8 +41,8 @@
      get_url: url="https://dl.dropboxusercontent.com/u/3172021/Tutorials.zip" dest="/home/vagrant"
    - name: Unzip Tutorials  
      command: /usr/bin/unzip -qo Tutorials.zip
-   - name: Copy start_notebook.sh
-     copy: src=tools/start_notebook.sh dest=/home/vagrant/start_notebook.sh mode=0755
+   - name: Copy notebook.sh
+     copy: src=tools/notebook.sh dest=/home/vagrant/notebook.sh mode=0755
    - name: Run notebook
      environment:
        PATH: $PATH:{{anaconda_path}}/bin   
