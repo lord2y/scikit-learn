@@ -12,10 +12,10 @@
    - name: check if Anaconda Installer is present?
      stat: path={{ home }}/Anaconda-2.1.0-Linux-x86.sh
      register: get_anaconda
-#   - name: Get Anaconda Installer
-#     get_url: url="http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.1.0-Linux-x86.sh" dest={{ home }}
-#   - name: install anaconda server
-#     command: /bin/bash Anaconda-2.1.0-Linux-x86.sh -p {{ anaconda_path }} -b
+   - name: Get Anaconda Installer
+     get_url: url="http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.1.0-Linux-x86.sh" dest={{ home }}
+   - name: install anaconda server
+     command: /bin/bash Anaconda-2.1.0-Linux-x86.sh -p {{ anaconda_path }} -b
    - name: update anaconda server
      environment:
        PATH: $PATH:{{anaconda_path}}/bin
