@@ -26,10 +26,10 @@
      environment:
        PATH: $PATH:{{anaconda_path}}/bin
      pip: name='file:///home/vagrant/Addutils.zip'
-   #- name: Addutils to conda
-   #  environment:
-   #    PATH: $PATH:{{anaconda_path}}/bin
-   #  command: /usr/bin/python /home/vagrant/Addutils/addutils/update_conda.py
+   - name: Addutils to conda
+     environment:
+       PATH: $PATH:{{anaconda_path}}/bin
+     command: /usr/bin/python /home/vagrant/Addutils/addutils/update_conda.py
    - name: Install fake-factory
      environment:
        PATH: $PATH:{{anaconda_path}}/bin
