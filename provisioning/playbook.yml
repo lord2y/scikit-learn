@@ -46,4 +46,4 @@
    - name: Run notebook
      environment:
        PATH: $PATH:{{anaconda_path}}/bin   
-     shell: . /etc/profile && /home/vagrant/start_notebook.sh start
+     shell: . /etc/profile && /home/vagrant/notebook.sh start
