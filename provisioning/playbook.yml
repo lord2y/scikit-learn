@@ -4,25 +4,24 @@
   sudo: no
   vars: 
    anaconda_path: /home/vagrant/anaconda
+   home: /home/vagrant
   tasks:
    - name: install zip
      sudo: yes
      apt: name=zip state=present  
    - name: check if Anaconda Installer is present?
-     stat: path=~/Anaconda-2.1.0-Linux-x86.sh
+     stat: path={{ home }}/Anaconda-2.1.0-Linux-x86.sh
      register: get_anaconda
-   - name: Get Anaconda Installer
-     get_url: url="http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.1.0-Linux-x86.sh"
-     when: get_anaconda|changed
-   - name: install anaconda server
-     command: /bin/bash Anaconda-2.1.0-Linux-x86.sh -p {{ anaconda_path }} -b
-     when: anaconda_present|changed
+#   - name: Get Anaconda Installer
+#     get_url: url="http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.1.0-Linux-x86.sh" dest={{ home }}
+#   - name: install anaconda server
+#     command: /bin/bash Anaconda-2.1.0-Linux-x86.sh -p {{ anaconda_path }} -b
    - name: update anaconda server
      environment:
        PATH: $PATH:{{anaconda_path}}/bin
      command: conda update --yes --all
    - name: Get AddUtils
-     get_url: url="https://dl.dropboxusercontent.com/u/3172021/Addutils.zip" dest="/home/vagrant"
+     get_url: url="https://dl.dropboxusercontent.com/u/3172021/Addutils.zip" dest={{ home }}
    - name: Install Addutils
      environment:
        PATH: $PATH:{{anaconda_path}}/bin
@@ -35,9 +34,9 @@
      environment:
        PATH: $PATH:{{anaconda_path}}/bin
      pip: name=fake-factory
-   #- command: /bin/mkdir /home/vagrant/Tutorials
-   #- name: Get Tutorials
-   #  get_url: url="https://dl.dropboxusercontent.com/u/3172021/Tutorials.zip" dest="/home/vagrant"
+   - command: /bin/mkdir /home/vagrant/Tutorials
+   - name: Get Tutorials
+     get_url: url="https://dl.dropboxusercontent.com/u/3172021/Tutorials.zip" dest="/home/vagrant"
    - name: Unzip Tutorials  
      command: /usr/bin/unzip -qo Tutorials.zip
    - name: Copy start_notebook.sh
