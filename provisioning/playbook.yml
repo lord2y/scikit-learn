@@ -5,12 +5,6 @@
   vars: 
    anaconda_path: /home/vagrant/anaconda
   tasks:
-   - name: install screen
-     sudo: yes
-     apt: name=screen state=present
-   - name: install curl
-     sudo: yes
-     apt: name=curl state=present
    - name: install zip
      sudo: yes
      apt: name=zip state=present  
