@@ -26,6 +26,8 @@
      environment:
        PATH: $PATH:{{anaconda_path}}/bin
      pip: name='file:///home/vagrant/Addutils.zip'
+   - name: Unzip Utils  
+     command: /usr/bin/unzip -qo Addutils.zip 
    - name: Addutils to conda
      environment:
        PATH: $PATH:{{anaconda_path}}/bin
